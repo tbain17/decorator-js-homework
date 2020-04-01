@@ -37,6 +37,7 @@ Decorator.prototype.paintRoom = function (room) {
         this.paintStock[i].empty();
       };
     };
+    room.paintRoom();
   };
 };
 

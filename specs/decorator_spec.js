@@ -48,8 +48,10 @@ describe('Decorator', function () {
       decorator.paintRoom(room);
       const actual = decorator.totalPaint();
       const empty_can = decorator.paintStock[0].total;
+      const roomStatus = room.status;
       assert.strictEqual(actual, 20);
       assert.strictEqual(empty_can, 0);
+      assert.strictEqual(roomStatus, 'painted');
     });
 
     it('should be able to remove empty cans', function () {
