@@ -28,13 +28,15 @@ Decorator.prototype.sufficentPaint = function (room) {
 
 Decorator.prototype.paintRoom = function (room) {
   if (this.sufficentPaint(room) === true) {
-    if (room.area <= this.paintStock[0].total) {
-    this.paintStock[0].total -= room.area;
-  } else {
-    let paint = room.area - this.paintStock[0].total;
-    this.paintStock[0].total = 0;
-    this.paintStock[1].total -= paint;
-  };
+    for (let i = 0; i < this.paintStock.length; i ++) {
+      if (room.area <= this.paintStock[i].total) {
+        this.paintStock[i].total -= room.area;
+      } else {
+        let paint = room.area - this.paintStock[i].total;
+        room.area -= paint;
+        this.paintStock[i].empty();
+      };
+    };
   };
 };
 
